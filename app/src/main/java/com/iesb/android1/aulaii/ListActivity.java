@@ -1,4 +1,4 @@
-package com.iesb.android1.trabalho.trabalho;
+package com.iesb.android1.aulaii;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.iesb.android1.aulaii.R;
+import com.iesb.android1.trabalho.trabalho.Contato;
+import com.iesb.android1.trabalho.trabalho.ContatoAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

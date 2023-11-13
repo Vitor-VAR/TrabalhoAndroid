@@ -28,11 +28,13 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:id="@+id/etNome_Home"
             android:hint="Nome"
             android:layout_weight="2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <EditText
+            android:id="@+id/etTel"
             android:hint="Telefone"
             android:layout_weight="2"
             android:layout_width="match_parent"
@@ -41,16 +43,24 @@
     </LinearLayout>
 
     <EditText
+        android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="E-mail"/>
 
     <Button
+        android:id="@+id/btIncluir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="INCLUIR"
         android:background="@color/white"
         android:layout_marginTop="10dp"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
+
+

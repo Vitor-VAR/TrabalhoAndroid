@@ -33,9 +33,9 @@ public class ContatoAdapter extends RecyclerView.Adapter<ContatoAdapter.NameView
     public void onBindViewHolder(@NonNull NameViewHolder nameViewHolder, int position) {
         Contato contato = contatos.get(position);
 
-        nameViewHolder.tvNome.setText(contato.getNome());
-        nameViewHolder.tvTelefone.setText(contato.getTelefone());
-        nameViewHolder.tvEmail.setText(contato.getEmail());
+        nameViewHolder.tvNome_Home.setText(contato.getNome());
+        nameViewHolder.tvTel_Home.setText(contato.getTelefone());
+        nameViewHolder.tvEmail_Home.setText(contato.getEmail());
 
     }
 
@@ -46,17 +46,16 @@ public class ContatoAdapter extends RecyclerView.Adapter<ContatoAdapter.NameView
 
     class NameViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvNome;
-        TextView tvTelefone;
-        TextView tvEmail;
-
+        TextView tvNome_Home;
+        TextView tvTel_Home;
+        TextView tvEmail_Home;
 
         NameViewHolder (View view){
 
             super(view);
-            tvNome = view.findViewById(R.id.tvNome);
-            tvTelefone = view.findViewById(R.id.tvTelefone);
-            tvEmail = view.findViewById(R.id.tvEmail);
+            tvNome_Home = view.findViewById(R.id.tvNome_Home);
+            tvTel_Home = view.findViewById(R.id.tvTel_Home);
+            tvEmail_Home = view.findViewById(R.id.tvEmail_Home);
 
 
 
