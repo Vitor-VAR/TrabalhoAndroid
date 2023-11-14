@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ThemeActivity"
+            android:name="com.iesb.android1.trabalho.trabalho.ThemeActivity"
             android:exported="true">
 
             <!-- <intent-filter> -->

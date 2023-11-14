@@ -1,4 +1,4 @@
-package com.iesb.android1.aulaii;
+package com.iesb.android1.trabalho.trabalho;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -7,22 +7,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.iesb.android1.aulaii.R;
+
 public class ThemeActivity extends AppCompatActivity {
 
-    private Button btLight, btDark, btSO;
+    private Button btLight_Home, btDark_Home, btSO_Home;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_theme);
+        setContentView(R.layout.activity_home);
 
-        btDark = findViewById(R.id.btDark);
-        btLight = findViewById(R.id.btLight);
-        btSO = findViewById(R.id.btSO);
+        btDark_Home = findViewById(R.id.btDark_Home);
+        btLight_Home = findViewById(R.id.btLight_Home);
+        btSO_Home = findViewById(R.id.btSO_Home);
 
-        btDark.setOnClickListener(new View.OnClickListener() {
+        btDark_Home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -31,7 +33,7 @@ public class ThemeActivity extends AppCompatActivity {
 
         });
 
-        btLight.setOnClickListener(new View.OnClickListener() {
+        btLight_Home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -40,7 +42,7 @@ public class ThemeActivity extends AppCompatActivity {
 
         });
 
-        btDark.setOnClickListener(new View.OnClickListener() {
+        btDark_Home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
