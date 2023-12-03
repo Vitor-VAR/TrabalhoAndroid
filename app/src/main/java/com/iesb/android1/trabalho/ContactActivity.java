@@ -63,12 +63,11 @@ public class ContactActivity extends AppCompatActivity implements ContatoAdapter
         btLight_Home = findViewById(R.id.btLight_Home);
         btSO_Home = findViewById(R.id.btSO_Home);
 
-        btIncluir_Home = findViewById(R.id.btIncluir_Home);
-
         recyclerViewHome = findViewById(R.id.recyclerViewHome);
         etNome = findViewById(R.id.etNome_Home);
         etTel = findViewById(R.id.etTel);
         etEmail = findViewById(R.id.etEmail);
+        btIncluir_Home = findViewById(R.id.btIncluir_Home);
 
 
         contactsList = new ArrayList<>();
@@ -89,15 +88,15 @@ public class ContactActivity extends AppCompatActivity implements ContatoAdapter
             @Override
             public void onClick(View view) {
 
-                Contact contact = new Contact(etNome.getText().toString().trim(), etTel.getText().toString().trim(), etEmail.getText().toString().trim());
+                addContact(etNome.getText().toString().trim(), etTel.getText().toString().trim(), etEmail.getText().toString().trim());
                 updateRecyclerView();
 
-                System.out.println("Contato  " + contact.toString());
+//                System.out.println("Contato  " + contact.toString());
 
-                contactsList.add(contact);
-
-                contatoAdapter.notifyItemInserted(contactsList.size() - 1);
-                System.out.println("Contato  " + contactsList.size());
+//                contactsList.add(contact);
+//
+//                contatoAdapter.notifyItemInserted(contactsList.size() - 1);
+//                System.out.println("Contato  " + contactsList.size());
 
                 //Limpa o formulário ao incluir contato
                 etNome.setText("");
@@ -106,7 +105,6 @@ public class ContactActivity extends AppCompatActivity implements ContatoAdapter
 
             }
         });
-
 
         btDark_Home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,8 +163,8 @@ public class ContactActivity extends AppCompatActivity implements ContatoAdapter
         contentProviderResults.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
                 .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
                 .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
-                .withValue(ContactsContract.CommonDataKinds.Email.TYPE, email)
-                .withValue(ContactsContract.CommonDataKinds.Email.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
+                .withValue(ContactsContract.CommonDataKinds.Email.DATA, email)
+                .withValue(ContactsContract.CommonDataKinds.Email.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_WORK)
                 .build());
 
         try {
@@ -182,7 +180,7 @@ public class ContactActivity extends AppCompatActivity implements ContatoAdapter
         ArrayList<Contact> contacts = new ArrayList<>();
         ContentResolver contentResolver = getContentResolver();
         Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
-        String[] projection = {ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER};
+        String[] projection = {ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.DATA };
 
         @NonNull
         Cursor cursor = contentResolver.query(uri, projection, null, null, null);

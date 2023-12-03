@@ -14,22 +14,25 @@
 
 
         <EditText
-            android:id="@+id/etNome_Home"
+            android:id="@+id/etNome_Update"
             android:hint="Nome"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@+id/tvNome_Home"/>
 
         <EditText
-            android:id="@+id/etTel"
+            android:id="@+id/etTel_Update"
             android:hint="Telefone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@+id/tvTel_Home"/>
 
     <EditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etEmail_Update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="E-mail" />
+        android:hint="E-mail"
+        android:text="@+id/tvEmail_Home"/>
 
     <Button
         android:id="@+id/btAtualizar"
