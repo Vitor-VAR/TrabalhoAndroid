@@ -1,12 +1,35 @@
-package com.claudio.aulaiv;
+package com.iesb.android1.trabalho;
 
 public class Person {
     private int id;
     private String name;
+    private String phone;
+    private String email;
 
     public Person (int id, String name) {
         this.id = id;
         this.name = name;
+    }
+    public Person(String name, String phone, String email) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getId() {

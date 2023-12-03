@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.iesb.android1.trabalho.HomeActivity"
+    tools:context="com.iesb.android1.trabalho.ContactActivity"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -86,7 +86,7 @@
         android:hint="E-mail"/>
 
     <Button
-        android:id="@+id/btIncluir"
+        android:id="@+id/btIncluir_Home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="INCLUIR"

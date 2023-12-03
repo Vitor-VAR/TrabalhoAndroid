@@ -1,4 +1,4 @@
-package com.iesb.android1.trabalho.trabalho;
+package com.iesb.android1.trabalho;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,7 +35,7 @@ public class WelcomeActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String inputNome = etNome.getText().toString().trim();
-                Intent intent = new Intent(WelcomeActivity.this, HomeActivity.class);
+                Intent intent = new Intent(WelcomeActivity.this, ContactActivity.class);
                 intent.putExtra("KEY_NAME", inputNome);
                 startActivity(intent);
                 finish();

@@ -1,8 +1,10 @@
-package com.iesb.android1.trabalho.trabalho;
+package com.iesb.android1.trabalho;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,51 +14,66 @@ import com.iesb.android1.aulaii.R;
 
 import java.util.List;
 
-public class ContatoAdapter extends RecyclerView.Adapter<ContatoAdapter.NameViewHolder> {
+public class ContatoAdapter extends RecyclerView.Adapter<ContatoAdapter.ViewHolder> {
 
-    private List<Contato> contatos;
+    private List<Contact> contacts;
+    private IOnItemClickListener listener;
 
-    public ContatoAdapter(List<Contato>contatos){
+    public interface IOnItemClickListener {
+        void onItemClick(int position);
 
-        this.contatos = contatos;
+        void onDeleteClick(int position);
+    }
 
+    public ContatoAdapter(List<Contact> contacts, IOnItemClickListener listener) {
+
+        this.contacts = contacts;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
-    public NameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_name, parent, false);
-        return new NameViewHolder(itemView);
+        return new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NameViewHolder nameViewHolder, int position) {
-        Contato contato = contatos.get(position);
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
-        nameViewHolder.tvNome_Home.setText(contato.getNome());
-        nameViewHolder.tvTel_Home.setText(contato.getTelefone());
-        nameViewHolder.tvEmail_Home.setText(contato.getEmail());
+        Contact contact = contacts.get(position);
+        viewHolder.tvNome_Home.setText(contact.getNome());
+        viewHolder.tvTel_Home.setText(contact.getTelefone());
+        viewHolder.tvEmail_Home.setText(contact.getEmail());
+
+//        viewHolder.btEditar_Home.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+
 
     }
 
     @Override
     public int getItemCount() {
-        return contatos.size();
+        return contacts.size();
     }
 
-    class NameViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView tvNome_Home, tvTel_Home, tvEmail_Home;
 
-        TextView tvNome_Home;
-        TextView tvTel_Home;
-        TextView tvEmail_Home;
+        //LinearLayout view_Update;
+        Button btEditar_Home;
 
-        NameViewHolder (View view){
-
-            super(view);
-            tvNome_Home = view.findViewById(R.id.tvNome_Home);
-            tvTel_Home = view.findViewById(R.id.tvTel_Home);
-            tvEmail_Home = view.findViewById(R.id.tvEmail_Home);
-
+        public ViewHolder(View itemview) {
+            super(itemview);
+            tvNome_Home = itemview.findViewById(R.id.tvNome_Home);
+            tvTel_Home = itemview.findViewById(R.id.tvTel_Home);
+            tvEmail_Home = itemview.findViewById(R.id.tvEmail_Home);
+            //view_Update = itemview.findViewById(R.id.viewUpdate);
+            btEditar_Home = itemview.findViewById(R.id.btEditar_Home);
 
 
         }

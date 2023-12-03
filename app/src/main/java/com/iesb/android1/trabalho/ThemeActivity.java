@@ -1,4 +1,4 @@
-package com.iesb.android1.trabalho.trabalho;
+package com.iesb.android1.trabalho;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -18,7 +18,7 @@ public class ThemeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_contact);
 
         btDark_Home = findViewById(R.id.btDark_Home);
         btLight_Home = findViewById(R.id.btLight_Home);

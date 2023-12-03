@@ -1,4 +1,4 @@
-package com.claudio.aulaiv;
+package com.iesb.android1.trabalho;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -31,7 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int v1, int v2) { //v1 e v2: versão do banco
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
