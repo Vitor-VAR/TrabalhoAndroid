@@ -1,4 +1,4 @@
-package com.iesb.android1.trabalho.trabalho;
+package com.iesb.android1.trabalho;
 
 public class Contato {
 

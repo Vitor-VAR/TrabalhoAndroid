@@ -1,4 +1,4 @@
-package com.iesb.android1.trabalho.trabalho;
+package com.iesb.android1.trabalho;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String welcomeReceived = intent.getStringExtra("KEY_NAME");
 
-        tvWelcome.setText("Ola " + welcomeReceived);
+        tvWelcome.setText(" " + welcomeReceived);
 
         System.out.println("Nome: "+ welcomeReceived);
 
