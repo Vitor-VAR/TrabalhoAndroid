@@ -1,36 +1,16 @@
 package com.iesb.android1.trabalho;
 
 public class Person {
-    private int id;
-    private String name;
-    private String phone;
-    private String email;
 
-    public Person (int id, String name) {
+    public Person(int id, String nome) {
         this.id = id;
-        this.name = name;
-    }
-    public Person(String name, String phone, String email) {
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
+        this.nome = nome;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    private int id;
+    private String nome;
+    private String telefone;
+    private String email;
 
     public int getId() {
         return id;
@@ -40,11 +20,40 @@ public class Person {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+   public String toString(){
+        return "Nome: " + this.nome + " Telefone: " + this.telefone + " Email: " + this.email;
+    }
+
+
+    public Person(String nome, String telefone, String email) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+    }
+
+
 }

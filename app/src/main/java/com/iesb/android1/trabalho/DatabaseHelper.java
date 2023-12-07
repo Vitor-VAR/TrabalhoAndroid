@@ -12,11 +12,12 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "PersonDB";
-    private static final String TABLE_NAME = "person";
-
+    private static final String DATABASE_NAME = "ContatoDB";
+    private static final String TABLE_NAME = "contato";
     private static final String KEY_ID = "id";
-    private static final String KEY_NAME = "name";
+    private static final String KEY_NAME = "nome";
+    private static final String PHONE = "telefone";
+    private static final String EMAIL = "email";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -24,9 +25,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String createTableSQL = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
+        String createTableSQL = "CREATE TABLE IF NOT EXISTS "+ TABLE_NAME + " (" +
                 KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "+
-                KEY_NAME + " TEXT " + ")";
+                KEY_NAME + " TEXT, " + PHONE + " TEXT, " + EMAIL + " TEXT " + " )";
         sqLiteDatabase.execSQL(createTableSQL);
     }
 
@@ -39,7 +40,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public long addPerson(Person person) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME, person.getName());
+        values.put(KEY_NAME, person.getNome());
+        //values.put(PHONE, person.getTelefone());
+        values.put(EMAIL, person.getEmail());
 
         long id = database.insert(TABLE_NAME, null, values);
         //Realizar teste de carga
@@ -70,7 +73,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public int updatePerson (Person person) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(KEY_NAME, person.getName());
+        contentValues.put(KEY_NAME, person.getNome());
+        contentValues.put(PHONE, person.getTelefone());
+        contentValues.put(EMAIL, person.getEmail());
 
         int rowsAffected = database.update(TABLE_NAME, contentValues, KEY_ID + " = ?",
                 new String[] {String.valueOf(person.getId())});

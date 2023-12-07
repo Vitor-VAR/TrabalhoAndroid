@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,7 +15,7 @@ import java.util.List;
 
 public class ContatoAdapter extends RecyclerView.Adapter<ContatoAdapter.ViewHolder> {
 
-    private List<Contact> contacts;
+    private List<Person> contacts;
     private IOnItemClickListener listener;
 
     public interface IOnItemClickListener {
@@ -25,7 +24,7 @@ public class ContatoAdapter extends RecyclerView.Adapter<ContatoAdapter.ViewHold
         void onDeleteClick(int position);
     }
 
-    public ContatoAdapter(List<Contact> contacts, IOnItemClickListener listener) {
+    public ContatoAdapter(List<Person> contacts, IOnItemClickListener listener) {
 
         this.contacts = contacts;
         this.listener = listener;
@@ -41,16 +40,19 @@ public class ContatoAdapter extends RecyclerView.Adapter<ContatoAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
-        Contact contact = contacts.get(position);
-        viewHolder.tvNome_Home.setText(contact.getNome());
-        viewHolder.tvTel_Home.setText(contact.getTelefone());
-        viewHolder.tvEmail_Home.setText(contact.getEmail());
+        Person person = contacts.get(position);
+        viewHolder.tvNome_Home.setText(person.getNome());
+        viewHolder.tvTel_Home.setText(person.getTelefone());
+        viewHolder.tvEmail_Home.setText(person.getEmail());
 
-//        viewHolder.btEditar_Home.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
+////        viewHolder.btEditar_Home.setOnClickListener(new View.OnClickListener() {
+//////            @Override
+//////            public void onClick(View view) {
+//////                Intent intent = new Intent(viewHolder.itemView.getContext(), UpDateActivity.class);
+//////                intent.putExtra("Nome", String.valueOf(contacts.));
+//////
+//////
+//////            }
 //        });
 
 

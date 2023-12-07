@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.iesb.android1.trabalho.UpDateActivity"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:id="@+id/viewUpdate">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="Tela de Atualização"/>
+
+
+    <EditText
+        android:id="@+id/etNome_Update"
+        android:hint="Nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@+id/tvNome_Home"/>
+
+    <EditText
+        android:id="@+id/etTel_Update"
+        android:hint="Telefone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@+id/tvTel_Home"/>
+
+    <EditText
+        android:id="@+id/etEmail_Update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="E-mail"
+        android:text="@+id/tvEmail_Home"/>
+
+    <Button
+        android:id="@+id/btAtualizar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="ATUALIZAR" />
+
+
+</LinearLayout>
