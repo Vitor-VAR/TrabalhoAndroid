@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.iesb.android1.aulaii.R;
 
@@ -24,8 +25,8 @@ import java.util.List;
 
 public class ContactActivity extends AppCompatActivity implements ContatoAdapter.IOnItemClickListener {
 
-    private Button btLight_Home, btDark_Home, btSO_Home, btIncluir_Home;
-    private List<Person> contactsList;
+    private Button btLight_Home, btDark_Home, btSO_Home, btIncluir_Home, btEditar_Home, btExcluir_Home;
+    private List<Person> contactsList, personList;
     private Person person1;
     private RecyclerView recyclerViewHome;
     private ContatoAdapter contatoAdapter;
@@ -65,9 +66,9 @@ public class ContactActivity extends AppCompatActivity implements ContatoAdapter
         btIncluir_Home = findViewById(R.id.btIncluir_Home);
 
         personDAO = new PersonDAO(this);
-
         contactsList = new ArrayList<>();
         contatoAdapter = new ContatoAdapter(contactsList, this);
+
         recyclerViewHome.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewHome.setAdapter(contatoAdapter);
 
@@ -84,26 +85,63 @@ public class ContactActivity extends AppCompatActivity implements ContatoAdapter
                 System.out.println("linhas afetadas " + retorno);
 
                 if(retorno != -1){
+                    alerta("Sucesso!");
                     System.out.println("Contato salvo no banco com sucesso!");
+                    System.out.println("Contato  " + person1.toString());
 
-                }else{System.out.println("Erro ao interagir com o banco!");}
+                    contactsList.add(person1);
+                    updateRecyclerView();
 
-                //updateRecyclerView();
+                    contatoAdapter.notifyItemInserted(contactsList.size() - 1);
 
-                System.out.println("Contato  " + person1.toString());
+                    System.out.println("Contato  " + contactsList.size());
 
-                contactsList.add(person1);
+                    //Limpa o formulário ao incluir contato
+                    etNome.setText("");
+                    etTel.setText("");
+                    etEmail.setText("");
 
-                contatoAdapter.notifyItemInserted(contactsList.size() - 1);
-                System.out.println("Contato  " + contactsList.size());
+                }else{
+                    alerta("Erro ao interagir com DB");
+                    System.out.println("Erro ao interagir com o banco!");}
 
-                //Limpa o formulário ao incluir contato
-                etNome.setText("");
-                etTel.setText("");
-                etEmail.setText("");
 
             }
         });
+
+        if(!contactsList.isEmpty()){
+            btEditar_Home = findViewById(R.id.btEditar_Home);
+            btExcluir_Home = findViewById(R.id.btExcluir_Home);
+
+            btEditar_Home.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    TextView tvNome_Home, tvTel_Home, tvEmail_Home;
+
+                    tvNome_Home = findViewById(R.id.tvNome_Home);
+                    tvTel_Home = findViewById(R.id.tvTel_Home);
+                    tvEmail_Home = findViewById(R.id.tvEmail_Home);
+
+                    String inputNome = tvNome_Home.getText().toString().trim();
+                    String inputTel = tvTel_Home.getText().toString().trim();
+                    String inputEmail = tvEmail_Home.getText().toString().trim();
+
+
+                    Intent intent = new Intent( ContactActivity.this, UpDateActivity.class);
+                    intent.putExtra("KEY_NAME", inputNome);
+                    intent.putExtra("KEY_PHONE ", inputTel);
+                    intent.putExtra("KEY_EMAIL", inputEmail);
+                    startActivity(intent);
+                    finish();
+
+                }
+            });
+
+
+
+            updateRecyclerView();
+
+        }
 
         btDark_Home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,34 +163,13 @@ public class ContactActivity extends AppCompatActivity implements ContatoAdapter
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
             }
         });
-    }
 
-    private void requestPermissions() {
-        if (checkSelfPermission(Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED ||
-                checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_CONTACTS}, PERMISSION_REQUEST_CODE);
-        }
-    }
-
-    private boolean checkPermission() {
-        return ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED;
     }
 
     private void updateRecyclerView() {
         contactsList.clear();
-        //contactsList.addAll(getContactsList());
+        contactsList.addAll(personDAO.getAllPerson());
         contatoAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == PERMISSION_REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                updateRecyclerView();
-            }
-        }
     }
 
     @Override
@@ -163,5 +180,10 @@ public class ContactActivity extends AppCompatActivity implements ContatoAdapter
     @Override
     public void onDeleteClick(int position) {
 
+    }
+
+    private void alerta(String menssagem){
+
+        Toast.makeText(this, menssagem, Toast.LENGTH_SHORT).show();
     }
 }

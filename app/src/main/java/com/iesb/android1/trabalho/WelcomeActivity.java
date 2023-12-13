@@ -17,8 +17,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private EditText etNome;
 
-    private TextView tvWelcome;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +25,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
         etNome = findViewById(R.id.etNome);
         btEntrar = findViewById(R.id.btEntrar);
-        tvWelcome = findViewById(R.id.tvWelcome);
-
 
         btEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
